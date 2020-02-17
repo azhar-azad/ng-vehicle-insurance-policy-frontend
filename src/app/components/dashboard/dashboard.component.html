@@ -1,0 +1,38 @@
+<h1>Insurance Policy Management</h1>
+
+<div>
+
+  <table border="1" width="100%" style="border-collapse: collapse;">
+
+    <tr>
+      <th>Policy ID</th>
+      <th>Policy Number</th>
+      <th>Policy Amount</th>
+      <th>Operations</th>
+    </tr>
+
+    <tr *ngFor="let policy of policies">
+      <td>{{ policy.policyId}}</td>
+      <td>{{ policy.number}}</td>
+      <td>{{ policy.amount}}</td>
+      <td>
+        <button (click)="deletePolicy(policy.policyId)">Delete</button>
+        <button (click)="selectPolicy(policy)">Update or Create New</button>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <form #formId="ngForm">
+    <label for="">Number: </label>
+    <input type="text" name="number" [(ngModel)]="selectedPolicy.number">
+    <br>
+    <label for="">Amount: </label>
+    <input type="text" name="amount" [(ngModel)]="selectedPolicy.amount">
+    <br>
+    <input type="button" (click)="UpdatePolicy(formId)" value="Update Policy">
+    <input type="button" (click)="CreatePolicy(formId)" value="Create Policy">
+  </form>
+
+</div>
